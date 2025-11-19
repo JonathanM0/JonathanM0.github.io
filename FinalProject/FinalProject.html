@@ -1,0 +1,106 @@
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jonathan Miranda | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">Jonathan Miranda</div>
+
+      <!-- Mobile Toggle Button -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Illustrations</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Character Sheets</a></li>
+            <li><a href="#">Storyboards</a></li>
+            <li><a href="#">Concepts</a></li>
+            <li><a href="#">Drawings</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Animation</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Rough Drafts</a></li>
+            <li><a href="#">Concepts</a></>
+            <li><a href="#">Finished Animations</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Design</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Typography</a></li>
+            <li><a href="#">Branding</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Other</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Information</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Socials</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    // Hamburger toggles entire nav
+    const navToggle = document.querySelector(".nav-toggle");
+    const mainNav = document.querySelector(".main-nav");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      mainNav.classList.toggle("active");
+    });
+
+    // Click-to-open dropdowns (all devices)
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+    dropdownToggles.forEach((toggle) => {
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const parent = toggle.parentElement;
+        parent.classList.toggle("open");
+
+        // close others
+        document.querySelectorAll(".dropdown").forEach((d) => {
+          if (d !== parent) d.classList.remove("open");
+        });
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".dropdown") && !e.target.closest(".nav-toggle")) {
+        document.querySelectorAll(".dropdown").forEach((item) =>
+          item.classList.remove("open")
+        );
+      }
+    });
+  </script>
+</body>
+</html>

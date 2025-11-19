@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "Futura";
+  src: url("fonts/Futura.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Futura";
+  src: url("fonts/Futura-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Futura", "Trebuchet MS", Helvetica, Arial, sans-serif;
+  background: #fafafa; color: #111; padding: 0 2rem;
+}
+
+.site-header {
+  border-bottom: 2px solid #e5e5e5;
+  padding: 1.5rem 0;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: font-size 0.25s ease;
+}
+
+.main-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.35s ease;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color .18s ease;
+}
+
+.main-nav a:hover { color: #0077cc; }
+
+/* ---------- Dropdown (click-based) ---------- */
+.dropdown { position: relative; }
+
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  min-width: 220px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .32s ease;
+  z-index: 100;
+}
+.dropdown.open .dropdown-menu {
+  max-height: 420px;
+  opacity: 1;
+  pointer-events: auto;
+  padding: .5rem 0;
+}
+
+.dropdown-menu a {
+  padding: .7rem 1.25rem;
+  color: #222;
+  text-transform: none;
+  font-weight: 100;
+  font-size: .95rem;
+}
+.dropdown-menu a:hover { background: #f5f5f5; color: #0077cc; }
+
+/* ---------- Hamburger ---------- */
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 200;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #111;
+  border-radius: 2px;
+  transition: all .28s ease;
+  position: relative;
+}
+.hamburger::before { transform: translateY(-8px); }
+.hamburger::after { transform: translateY(5px); }
+
+.nav-toggle.active .hamburger { background: transparent; }
+.nav-toggle.active .hamburger::before { transform: rotate(45deg) translate(5px,5px); }
+.nav-toggle.active .hamburger::after { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ---------- Responsive tweaks ---------- */
+
+/* medium screens */
+@media (max-width: 1024px) {
+  .logo { font-size: 4rem; }
+  .dropdown-menu a {
+    padding: 0.7rem 1.25rem;
+}
+
+
+/* mobile layout: switch header-top to space-between so logo & hamburger don't overlap */
+@media (max-width: 768px) {
+  .header-top {
+    justify-content: space-between; /* logo left, hamburger right */
+    padding: 0 0.5rem;
+  }
+
+  .logo {
+    font-size: 2.8rem;
+    /* allow logo to shrink if necessary */
+    flex: 1 1 auto;
+    text-align: left;
+    margin-right: 1rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  /* Nav becomes a slide-down panel */
+  .main-nav {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all .38s ease;
+  }
+  .main-nav.active {
+    max-height: 900px; /* generous space for menu */
+    opacity: 1;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    margin-top: .75rem;
+    padding: 0 1rem;
+  }
+
+  /* mobile dropdowns: inline, not absolute */
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    background: #fafafa;
+    border: none;
+    box-shadow: none;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    padding-left: 1rem;
+  }
+  .dropdown.open .dropdown-menu {
+    max-height: 360px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: .5rem 0 .5rem 1rem;
+  }
+
+  .dropdown-menu a { padding: .5rem 0; }
+}
+
