@@ -1,0 +1,130 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Information | Jonathan Miranda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo"><a href="index.html" style="color:#008B8B;text-decoration:none;">Jonathan Miranda</a></div>
+    <button class="nav-toggle"><span class="hamburger"></span></button>
+  </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li class="dropdown">
+          <a href="illustrations.html" class="dropdown-toggle">Illustrations</a>
+          <ul class="dropdown-menu">
+            <li><a href="illustrations.html#characters">Character Sheets</a></li>
+            <li><a href="illustrations.html#storyboards">Storyboards</a></li>
+            <li><a href="illustrations.html#concepts">Concepts</a></li>
+            <li><a href="illustrations.html#drawings">Drawings</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="animation.html" class="dropdown-toggle">Animation</a>
+          <ul class="dropdown-menu">
+            <li><a href="animation.html#rough">Rough Drafts</a></li>
+            <li><a href="animation.html#concepts">Concepts</a></li>
+            <li><a href="animation.html#finished">Finished Animations</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="design.html" class="dropdown-toggle">Design</a>
+          <ul class="dropdown-menu">
+            <li><a href="design.html#graphic">Graphic Design</a></li>
+            <li><a href="design.html#typography">Typography</a></li>
+            <li><a href="design.html#branding">Branding</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="other.html" class="dropdown-toggle">Other</a>
+          <ul class="dropdown-menu">
+            <li><a href="other.html#option1">Option 1</a></li>
+            <li><a href="other.html#option2">Option 2</a></li>
+            <li><a href="other.html#option3">Option 3</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="information.html" class="dropdown-toggle">Information</a>
+          <ul class="dropdown-menu">
+            <li><a href="information.html#about">About Me</a></li>
+            <li><a href="information.html#socials">Socials</a></li>
+            <li><a href="information.html#email">Email</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+</header>
+
+<h2 class="section-subtitle">Information</h2>
+
+<section class="content-section">
+
+  <a id="about"></a>
+  <div class="content-item">
+    <div class="content-text">
+      <h2>About Me</h2>
+      <p>Write a bio describing your background and artistic focus.</p>
+    </div>
+    <div class="content-image"><img src="https://via.placeholder.com/250x180"></div>
+  </div>
+
+  <a id="socials"></a>
+  <div class="content-item">
+    <div class="content-text">
+      <h2>Socials</h2>
+      <p>Instagram, ArtStation, YouTube, LinkedIn, etc.</p>
+    </div>
+    <div class="content-image"><img src="https://via.placeholder.com/250x180"></div>
+  </div>
+
+  <a id="email"></a>
+  <div class="content-item">
+    <div class="content-text">
+      <h2>Email</h2>
+      <p>Provide your business contact email.</p>
+    </div>
+    <div class="content-image"><img src="https://via.placeholder.com/250x180"></div>
+  </div>
+
+</section>
+
+<script>
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainNav = document.querySelector(".main-nav");
+  navToggle.addEventListener("click", () => {
+    navToggle.classList.toggle("active");
+    mainNav.classList.toggle("active");
+  });
+
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach(t => {
+    t.addEventListener("click", e => {
+      e.preventDefault();
+      const parent = t.parentElement;
+      parent.classList.toggle("open");
+      document.querySelectorAll(".dropdown").forEach(d => {
+        if (d !== parent) d.classList.remove("open");
+      });
+    });
+  });
+
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".dropdown") && !e.target.closest(".nav-toggle")) {
+      document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("open"));
+    }
+  });
+</script>
+
+</body>
+</html>
