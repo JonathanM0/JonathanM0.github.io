@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jonathan Miranda | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:#008B8B;">Jonathan Miranda</a></div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li class="dropdown">
+          <a href="illustrations.html" class="dropdown-toggle">Illustrations</a>
+          <ul class="dropdown-menu">
+            <li><a href="illustrations.html#characters">Character Sheets</a></li>
+            <li><a href="illustrations.html#storyboards">Storyboards</a></li>
+            <li><a href="illustrations.html#concepts">Concepts</a></li>
+            <li><a href="illustrations.html#drawings">Drawings</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="animation.html" class="dropdown-toggle">Animation</a>
+          <ul class="dropdown-menu">
+            <li><a href="animation.html#rough">Rough Drafts</a></li>
+            <li><a href="animation.html#concepts">Concepts</a></li>
+            <li><a href="animation.html#finished">Finished Animations</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="design.html" class="dropdown-toggle">Design</a>
+          <ul class="dropdown-menu">
+            <li><a href="design.html#graphic">Graphic Design</a></li>
+            <li><a href="design.html#typography">Typography</a></li>
+            <li><a href="design.html#branding">Branding</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="other.html" class="dropdown-toggle">Other</a>
+          <ul class="dropdown-menu">
+            <li><a href="other.html#option1">Option 1</a></li>
+            <li><a href="other.html#option2">Option 2</a></li>
+            <li><a href="other.html#option3">Option 3</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="information.html" class="dropdown-toggle">Information</a>
+          <ul class="dropdown-menu">
+            <li><a href="information.html#about">About Me</a></li>
+            <li><a href="information.html#socials">Socials</a></li>
+            <li><a href="information.html#email">Email</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="banner.jpg" alt="Banner Image">
+  </div>
+
+  <h2 class="section-subtitle">Recently Added</h2>
+
+  <section class="content-section">
+
+    <div class="content-item">
+      <div class="content-text">
+        <h2>Recently added Project #1 Name</h2>
+        <p>
+          Short description about recently added project 1.
+        </p>
+      </div>
+      <div class="content-image">
+        <img src="https://via.placeholder.com/250x180?text=Image+1" alt="">
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-text">
+        <h2>Recently added Project #2 Name</h2>
+        <p>
+          Short description about recently added project 2.
+        </p>
+      </div>
+      <div class="content-image">
+        <img src="https://via.placeholder.com/250x180?text=Image+2" alt="">
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-text">
+        <h2>Recently added Project #3 Name</h2>
+        <p>
+          Short description about recently added project 3.
+        </p>
+      </div>
+      <div class="content-image">
+        <img src="https://via.placeholder.com/250x180?text=Image+3" alt="">
+      </div>
+    </div>
+
+  </section>
+
+<script>
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainNav = document.querySelector(".main-nav");
+
+  navToggle.addEventListener("click", () => {
+    navToggle.classList.toggle("active");
+    mainNav.classList.toggle("active");
+  });
+
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const parent = toggle.parentElement;
+      parent.classList.toggle("open");
+
+      document.querySelectorAll(".dropdown").forEach((d) => {
+        if (d !== parent) d.classList.remove("open");
+      });
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown") && !e.target.closest(".nav-toggle")) {
+      document.querySelectorAll(".dropdown").forEach((item) =>
+        item.classList.remove("open")
+      );
+    }
+  });
+</script>
+
+</body>
+</html>
